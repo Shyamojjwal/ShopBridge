@@ -1,0 +1,61 @@
+<div class="pro-section">
+  <h5 class="page-title">Showing All Inventories <a href="javascript:void(0)" (click)="createProduct()" class="pull-right">Create Inventory</a></h5>
+  <div class="pro-listing">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Brand</th>
+            <th class="description">Description</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of productList">
+            <td>{{item.title}}</td>
+            <td>{{item.brand}}</td>
+            <td class="description">{{item.description}}</td>
+            <td>{{item.price}}</td>
+            <td class="act-btn-cont">
+              <span class="act-btn act-edit material-icons" (click)="updateProduct(item.id)">mode_edit</span>
+              <span class="act-btn act-delete material-icons" (click)="removeProduct(item.id)">delete</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination_div" *ngIf="totalPage > 1">
+        <div class="pagination_div_right">
+          <ngb-pagination
+            [collectionSize]="totalRecords"
+            [pageSize]="limit"
+            [(page)]="crntPage"
+            [maxSize]="5"
+            [rotate]="true"
+            [boundaryLinks]="true"
+            (pageChange)="litingPageChanges($event)"
+          ></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal
+  [(mVisible)]="showItemModifyDialog"
+  [mTitle]="isCreateItem ? 'Create Inventory' : 'Update Inventory'"
+  (close)="successResponse()"
+>
+  <app-product-modifier [isOpen]="showItemModifyDialog" [isCreateDilog]="isCreateItem" [itemId]="updateItemId" (close)="successResponse()"></app-product-modifier>
+</app-modal>
+
+<app-modal
+  mSize="m-xs"
+  [(mVisible)]="showItemRemoveDialog"
+  [mTitle]="'Remove Inventory'"
+  (close)="successResponse()"
+>
+  <app-product-remove [itemId]="updateItemId" (close)="successResponse()"></app-product-remove>
+</app-modal>

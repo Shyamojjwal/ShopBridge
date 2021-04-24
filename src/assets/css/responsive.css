@@ -1,0 +1,9 @@
+@media only screen and (max-width: 768px) {
+    .pro-listing .table > thead > tr > th {
+        min-width: 25% !important;
+    }
+    .pro-listing .table > thead > tr > th.description,
+    .pro-listing .table > tbody > tr > td.description {
+        display: none !important;
+    }
+  }

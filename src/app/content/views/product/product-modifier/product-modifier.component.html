@@ -1,0 +1,68 @@
+<div class="update-cont">
+  <div class="form-section">
+    <p class="page-title">{{isCreateDilog ? 'Create New Inventory' : 'Update Existing Inventory'}}</p>
+    <form [formGroup]="inventoryForm" (ngSubmit)="inventorySubmitted()">
+      <div class="form-group">
+        <label class="input-label">Inventory Title</label>
+        <input
+          type="text"
+          placeholder="Inventory Title"
+          class="form-control"
+          formControlName="title"
+          tabindex="1"
+          (focus)="markFieldAsDirty(f.title)"
+          (focusout)="checkValidation()"
+        />
+        <span class="err-message">{{validationErrors.title}}</span>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="input-label">Inventory Brand</label>
+            <input
+              type="text"
+              placeholder="Inventory Brand"
+              class="form-control"
+              formControlName="brand"
+              tabindex="2"
+              (focus)="markFieldAsDirty(f.brand)"
+              (focusout)="checkValidation()"
+            />
+            <span class="err-message">{{validationErrors.brand}}</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="input-label">Inventory Price</label>
+            <input
+              type="text"
+              placeholder="Inventory Price"
+              class="form-control"
+              formControlName="price"
+              tabindex="4"
+              (focus)="markFieldAsDirty(f.price)"
+              (focusout)="checkValidation()"
+            />
+            <span class="err-message">{{validationErrors.price}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="input-label">Inventory Description</label>
+        <textarea
+          placeholder="Describe something"
+          class="form-control"
+          formControlName="description"
+          tabindex="5"
+          (focus)="markFieldAsDirty(f.description)"
+          (focusout)="checkValidation()"
+        ></textarea>
+        <span class="err-message">{{validationErrors.description}}</span>
+      </div>
+      <div class="submit-btn-grp text-center">
+        <button type="reset" class="btn btn-reset btn-width-250">Reset</button>
+        <button type="submit" class="btn btn-submit btn-width-250">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div [@dialog] *ngIf="mVisible" class="m-dialog app-modal" [ngClass]="mSize">
+  <div class="m-header">
+    <div class="m-title">
+      <p>{{mTitle}}</p>
+      <button *ngIf="closable" (click)="closeModal()" aria-label="Close" class="m-dialog__close-btn"><i class="far fa-times-circle"></i></button>
+    </div>
+  </div>
+	<ng-content></ng-content>	
+</div>
+<div *ngIf="mVisible" class="m-overlay"></div>

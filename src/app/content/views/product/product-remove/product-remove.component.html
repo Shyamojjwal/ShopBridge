@@ -1,0 +1,14 @@
+<div class="update-cont">
+    <div class="form-section">
+      <p class="page-title">{{itemTitle ? 'Inventory: ' + itemTitle : 'Remove Inventory'}}</p>
+      <form>
+        <div class="form-group">
+          <p>Are you sure want to remove this Inventory</p>
+        </div>
+        <div class="submit-btn-grp text-center">
+          <button type="button" class="btn btn-reset btn-width-150" (click)="close.emit()">Cancel</button>
+          <button type="button" class="btn btn-submit btn-width-150" (click)="confirmDelete()">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
